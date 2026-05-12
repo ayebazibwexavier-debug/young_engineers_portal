@@ -1,0 +1,74 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Clock, Target, ArrowRight, Download } from "lucide-react";
+import { SiteHeader } from "@/components/asist/SiteHeader";
+import { SlideDeck, type Slide } from "@/components/asist/SlideDeck";
+import { Quiz } from "@/components/asist/Quiz";
+import { MissionAccomplished } from "@/components/asist/MissionAccomplished";
+import { Button } from "@/components/ui/button";
+
+export const Route = createFileRoute("/lessons/lego")({
+  component: LegoLesson,
+  head: () => ({
+    meta: [
+      { title: "LEGO Power Car · ASIST Young Engineers" },
+      { name: "description", content: "Build a battery-powered LEGO car in 8 sideways slides. Mobile-first lesson with quiz and photo verification." },
+    ],
+  }),
+});
+
+const slides: Slide[] = [
+  { title: "Mission", caption: "Build a 4-wheel LEGO car that rolls 1 metre.", emoji: "🚗", bg: "bg-warm" },
+  { title: "Parts", caption: "Grab a baseplate, 4 wheels, 2 axles, and a battery box.", emoji: "🧱" },
+  { title: "Chassis", caption: "Snap a 6×10 plate as your chassis foundation.", emoji: "🟨" },
+  { title: "Axles", caption: "Push axles through wheel holders, front and back.", emoji: "⚙️" },
+  { title: "Wheels", caption: "Pop wheels onto each axle. Spin them — they should turn freely.", emoji: "🛞" },
+  { title: "Motor", caption: "Clip the motor on top and connect it to the rear axle.", emoji: "🔌" },
+  { title: "Battery", caption: "Slide in 2× AA batteries and snap the cover.", emoji: "🔋" },
+  { title: "Test drive", caption: "Switch on. Race it across the desk. Mission ready!", emoji: "🏁", bg: "bg-sun" },
+];
+
+const quiz = [
+  { q: "Which part gives the car energy to move?", choices: ["Wheels", "Battery box", "Baseplate", "Axle"], answer: 1 },
+  { q: "If a wheel doesn't spin freely, what should you check first?", choices: ["The colour", "The axle alignment", "The battery", "The plate"], answer: 1 },
+  { q: "How many wheels does our car need?", choices: ["2", "3", "4", "6"], answer: 2 },
+  { q: "Where does the motor connect?", choices: ["Front axle", "Rear axle", "The roof", "Battery box"], answer: 1 },
+];
+
+function LegoLesson() {
+  const [done, setDone] = useState(false);
+  return (
+    <div className="min-h-screen pb-16">
+      <SiteHeader />
+      <div className="mx-auto max-w-4xl px-4 pt-6">
+        <div className="text-xs text-muted-foreground"><Link to="/" className="hover:underline">Home</Link> · LEGO Power Car</div>
+        <h1 className="font-display text-3xl sm:text-4xl font-extrabold mt-2">LEGO Power Car</h1>
+        <p className="text-muted-foreground mt-1">Your first physical build. Swipe through the slides and assemble step by step.</p>
+        <div className="mt-3 flex flex-wrap gap-3 text-xs">
+          <span className="inline-flex items-center gap-1 rounded-full bg-accent border border-foreground/10 px-2 py-1"><Target className="size-3" /> Roll 1 metre</span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-accent border border-foreground/10 px-2 py-1"><Clock className="size-3" /> ~25 min</span>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-4xl px-4 mt-6">
+        <SlideDeck slides={slides} accent="bg-primary" />
+      </div>
+
+      <div className="mx-auto max-w-4xl px-4 mt-8 grid lg:grid-cols-[2fr_1fr] gap-5">
+        <Quiz questions={quiz} onPass={() => setDone(true)} />
+        <div className="rounded-3xl border-2 border-foreground bg-sun p-5 shadow-card flex flex-col">
+          <div className="font-display text-xl font-bold">Built it for real?</div>
+          <p className="text-sm mt-1 opacity-80">Open the Assessment Hub and submit a front + side photo to earn the 🚗 badge.</p>
+          <Button asChild className="mt-4 self-start border-2 border-foreground shadow-pop">
+            <Link to="/assessment">Go to Assessment <ArrowRight className="ml-1 size-4" /></Link>
+          </Button>
+          <button className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground self-start">
+            <Download className="size-4" /> Download offline worksheet (PDF)
+          </button>
+        </div>
+      </div>
+
+      <MissionAccomplished open={done} onClose={() => setDone(false)} badge="🎓" title="Quiz cleared!" subtitle="+25 points · keep going to earn the build badge." />
+    </div>
+  );
+}
