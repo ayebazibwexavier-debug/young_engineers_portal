@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LessonsLegoRouteImport } from './routes/lessons.lego'
 import { Route as LessonsArduinoRouteImport } from './routes/lessons.arduino'
 
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AssessmentRoute = AssessmentRouteImport.update({
   id: '/assessment',
   path: '/assessment',
@@ -38,12 +44,14 @@ const LessonsArduinoRoute = LessonsArduinoRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assessment': typeof AssessmentRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/lessons/arduino': typeof LessonsArduinoRoute
   '/lessons/lego': typeof LessonsLegoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assessment': typeof AssessmentRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/lessons/arduino': typeof LessonsArduinoRoute
   '/lessons/lego': typeof LessonsLegoRoute
 }
@@ -51,26 +59,51 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/assessment': typeof AssessmentRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/lessons/arduino': typeof LessonsArduinoRoute
   '/lessons/lego': typeof LessonsLegoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/assessment' | '/lessons/arduino' | '/lessons/lego'
+  fullPaths:
+    | '/'
+    | '/assessment'
+    | '/leaderboard'
+    | '/lessons/arduino'
+    | '/lessons/lego'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/assessment' | '/lessons/arduino' | '/lessons/lego'
-  id: '__root__' | '/' | '/assessment' | '/lessons/arduino' | '/lessons/lego'
+  to:
+    | '/'
+    | '/assessment'
+    | '/leaderboard'
+    | '/lessons/arduino'
+    | '/lessons/lego'
+  id:
+    | '__root__'
+    | '/'
+    | '/assessment'
+    | '/leaderboard'
+    | '/lessons/arduino'
+    | '/lessons/lego'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssessmentRoute: typeof AssessmentRoute
+  LeaderboardRoute: typeof LeaderboardRoute
   LessonsArduinoRoute: typeof LessonsArduinoRoute
   LessonsLegoRoute: typeof LessonsLegoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/assessment': {
       id: '/assessment'
       path: '/assessment'
@@ -105,6 +138,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssessmentRoute: AssessmentRoute,
+  LeaderboardRoute: LeaderboardRoute,
   LessonsArduinoRoute: LessonsArduinoRoute,
   LessonsLegoRoute: LessonsLegoRoute,
 }
