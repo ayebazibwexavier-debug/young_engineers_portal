@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LessonsLegoRouteImport } from './routes/lessons.lego'
 import { Route as LessonsArduinoRouteImport } from './routes/lessons.arduino'
 
+const AssessmentRoute = AssessmentRouteImport.update({
+  id: '/assessment',
+  path: '/assessment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,36 +37,47 @@ const LessonsArduinoRoute = LessonsArduinoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assessment': typeof AssessmentRoute
   '/lessons/arduino': typeof LessonsArduinoRoute
   '/lessons/lego': typeof LessonsLegoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assessment': typeof AssessmentRoute
   '/lessons/arduino': typeof LessonsArduinoRoute
   '/lessons/lego': typeof LessonsLegoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assessment': typeof AssessmentRoute
   '/lessons/arduino': typeof LessonsArduinoRoute
   '/lessons/lego': typeof LessonsLegoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lessons/arduino' | '/lessons/lego'
+  fullPaths: '/' | '/assessment' | '/lessons/arduino' | '/lessons/lego'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lessons/arduino' | '/lessons/lego'
-  id: '__root__' | '/' | '/lessons/arduino' | '/lessons/lego'
+  to: '/' | '/assessment' | '/lessons/arduino' | '/lessons/lego'
+  id: '__root__' | '/' | '/assessment' | '/lessons/arduino' | '/lessons/lego'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssessmentRoute: typeof AssessmentRoute
   LessonsArduinoRoute: typeof LessonsArduinoRoute
   LessonsLegoRoute: typeof LessonsLegoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/assessment': {
+      id: '/assessment'
+      path: '/assessment'
+      fullPath: '/assessment'
+      preLoaderRoute: typeof AssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssessmentRoute: AssessmentRoute,
   LessonsArduinoRoute: LessonsArduinoRoute,
   LessonsLegoRoute: LessonsLegoRoute,
 }
