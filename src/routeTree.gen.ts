@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LessonsLegoRouteImport } from './routes/lessons.lego'
+import { Route as LessonsArduinoRouteImport } from './routes/lessons.arduino'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +23,39 @@ const LessonsLegoRoute = LessonsLegoRouteImport.update({
   path: '/lessons/lego',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LessonsArduinoRoute = LessonsArduinoRouteImport.update({
+  id: '/lessons/arduino',
+  path: '/lessons/arduino',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/lessons/arduino': typeof LessonsArduinoRoute
   '/lessons/lego': typeof LessonsLegoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/lessons/arduino': typeof LessonsArduinoRoute
   '/lessons/lego': typeof LessonsLegoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/lessons/arduino': typeof LessonsArduinoRoute
   '/lessons/lego': typeof LessonsLegoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lessons/lego'
+  fullPaths: '/' | '/lessons/arduino' | '/lessons/lego'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lessons/lego'
-  id: '__root__' | '/' | '/lessons/lego'
+  to: '/' | '/lessons/arduino' | '/lessons/lego'
+  id: '__root__' | '/' | '/lessons/arduino' | '/lessons/lego'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LessonsArduinoRoute: typeof LessonsArduinoRoute
   LessonsLegoRoute: typeof LessonsLegoRoute
 }
 
@@ -65,11 +75,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LessonsLegoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lessons/arduino': {
+      id: '/lessons/arduino'
+      path: '/lessons/arduino'
+      fullPath: '/lessons/arduino'
+      preLoaderRoute: typeof LessonsArduinoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LessonsArduinoRoute: LessonsArduinoRoute,
   LessonsLegoRoute: LessonsLegoRoute,
 }
 export const routeTree = rootRouteImport
