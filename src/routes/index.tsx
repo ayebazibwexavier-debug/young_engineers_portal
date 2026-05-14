@@ -104,15 +104,15 @@ function Landing() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12">
-        <h2 className="font-display text-3xl font-extrabold text-center">How the Verification Engine works</h2>
+        <h2 className="font-display text-3xl font-extrabold text-center">How To Pick a Mission or course and submit assignments</h2>
         <p className="text-center text-muted-foreground mt-2 max-w-2xl mx-auto">
-          Two paths, one outcome: students learn, the system verifies, the leaderboard updates — automatically.
+          Dream it. Engineer it. Change the world.
         </p>
         <div className="grid md:grid-cols-3 gap-4 mt-8">
           {[
-            { n: "01", t: "Submit", d: "From Wokwi simulator OR a phone camera (front + side photo)." },
-            { n: "02", t: "Verify", d: "Behavioral simulation + static code check, or tutor-queued image scan." },
-            { n: "03", t: "Reward", d: "Points, badges, confetti and an instantly updated public leaderboard." },
+            { n: "01", t: "Submit", d: "Pick a mission, follow the slides, then send your Wokwi link or snap a photo of your build." },
+            { n: "02", t: "Verify", d: "Open the Assessment Hub — the engine auto-checks your code or queues your photo for tutor review." },
+            { n: "03", t: "Reward", d: "Earn points and badges instantly, then watch your rank climb on the live leaderboard." },
           ].map((s) => (
             <div key={s.n} className="rounded-3xl border-2 border-foreground bg-card p-5 shadow-card">
               <div className="font-mono text-xs text-muted-foreground">{s.n}</div>
