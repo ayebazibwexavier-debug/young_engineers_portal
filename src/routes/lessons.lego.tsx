@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Clock, Target, ArrowRight, Download } from "lucide-react";
+import { Clock, Target, ArrowRight, Download, ExternalLink } from "lucide-react";
 import { SiteHeader } from "@/components/asist/SiteHeader";
 import { SlideDeck, type Slide } from "@/components/asist/SlideDeck";
 import { Quiz } from "@/components/asist/Quiz";
@@ -56,6 +56,21 @@ function LegoLesson() {
 
       <div className="mx-auto max-w-4xl px-4 mt-8">
         <div className="rounded-3xl border-2 border-foreground bg-card p-3 shadow-card">
+          <div className="flex items-center justify-between px-2 py-2">
+            <div className="font-display font-bold">🛠️ Tinkercad Simulation</div>
+            <a href="https://www.tinkercad.com/embed/0cl8dPuvIbf?editbtn=1&simlab=1" target="_blank" rel="noreferrer" className="text-xs inline-flex items-center gap-1 text-muted-foreground hover:text-foreground">
+              Open in new tab <ExternalLink className="size-3" />
+            </a>
+          </div>
+          <iframe
+            src="https://www.tinkercad.com/embed/0cl8dPuvIbf?editbtn=1&simlab=1"
+            title="Tinkercad LEGO car simulation"
+            className="aspect-video w-full rounded-2xl border border-foreground/10 bg-foreground/5"
+            allow="fullscreen"
+          />
+        </div>
+
+        <div className="mt-6 rounded-3xl border-2 border-foreground bg-card p-3 shadow-card">
           <div className="px-2 py-2 font-display font-bold">🎬 See the build in motion</div>
           <video
             src="https://static.vecteezy.com/system/resources/previews/052/912/299/watermarked/animation-of-car-vehicle-for-transportation-needs-showcasing-comfort-safety-and-efficiency-perfect-for-modern-travel-free-video.mp4"
