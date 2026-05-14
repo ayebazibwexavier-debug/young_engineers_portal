@@ -87,21 +87,6 @@ function ArduinoLesson() {
         </div>
 
         <div className="mt-6 rounded-3xl border-2 border-foreground bg-card p-3 shadow-card">
-          <div className="flex items-center justify-between px-2 py-2">
-            <div className="font-display font-bold">🛠️ Tinkercad Circuit</div>
-            <a href="https://www.tinkercad.com/embed/0cl8dPuvIbf?editbtn=1&simlab=1" target="_blank" rel="noreferrer" className="text-xs inline-flex items-center gap-1 text-muted-foreground hover:text-foreground">
-              Open in new tab <ExternalLink className="size-3" />
-            </a>
-          </div>
-          <iframe
-            src="https://www.tinkercad.com/embed/0cl8dPuvIbf?editbtn=1&simlab=1"
-            title="Tinkercad traffic light circuit"
-            className="aspect-video w-full rounded-2xl border border-foreground/10 bg-foreground/5"
-            allow="fullscreen"
-          />
-        </div>
-
-        <div className="mt-6 rounded-3xl border-2 border-foreground bg-card p-3 shadow-card">
           <div className="px-2 py-2 font-display font-bold">🎬 Watch it in action</div>
           <video
             src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Arduino_interactive_traffic_lights.webm"
