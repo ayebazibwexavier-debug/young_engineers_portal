@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { ArrowRight, Cpu, Car, Trophy, Wifi, Camera, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/asist/SiteHeader";
+import { useLeaderboard, getStudentId } from "@/lib/store";
 import hero from "@/assets/landing-hero.jpg";
 import lego from "@/assets/lego-hero.jpg";
 import arduino from "@/assets/arduino-hero.jpg";
@@ -18,6 +19,11 @@ export const Route = createFileRoute("/")({
 });
 
 function Landing() {
+  const board = useLeaderboard();
+  const sorted = [...board].sort((a, b) => b.points - a.points);
+  const myId = getStudentId();
+  const me = sorted.find((e) => e.id === myId);
+  const myRank = sorted.findIndex((e) => e.id === myId) + 1;
   return (
     <div className="min-h-screen">
       <SiteHeader />
@@ -65,8 +71,8 @@ function Landing() {
           <div className="absolute -bottom-4 -left-4 bg-card border-2 border-foreground rounded-2xl shadow-pop px-4 py-3 flex items-center gap-3">
             <div className="size-10 rounded-full bg-success grid place-items-center text-background">✓</div>
             <div>
-              <div className="text-xs text-muted-foreground">ASIST-STUDENT-001</div>
-              <div className="font-display font-bold text-sm">+150 pts · Rank #1</div>
+              <div className="text-xs text-muted-foreground font-mono">{myId}</div>
+              <div className="font-display font-bold text-sm">{me?.points ?? 0} pts · Rank #{myRank || "—"}</div>
             </div>
           </div>
         </motion.div>
