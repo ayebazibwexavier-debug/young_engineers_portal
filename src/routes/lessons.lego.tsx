@@ -89,9 +89,15 @@ function LegoLesson() {
           <Button asChild className="mt-4 self-start border-2 border-foreground shadow-pop">
             <Link to="/assessment">Go to Assessment <ArrowRight className="ml-1 size-4" /></Link>
           </Button>
-          <button className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground self-start">
+          <a
+            href="https://assets.education.lego.com/v3/assets/blt293eea581807678a/blt98b1580d961580ce/5f88040e1e95ad78fa1e8bec/9686-power-car.pdf"
+            target="_blank"
+            rel="noreferrer"
+            download
+            className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground self-start"
+          >
             <Download className="size-4" /> Download offline worksheet (PDF)
-          </button>
+          </a>
         </div>
       </div>
 
