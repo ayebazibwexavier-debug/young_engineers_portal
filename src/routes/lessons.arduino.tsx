@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Clock, Target, ArrowRight, ExternalLink } from "lucide-react";
+import { Clock, Target, ArrowRight, ExternalLink, Download } from "lucide-react";
 import { SiteHeader } from "@/components/asist/SiteHeader";
 import { SlideDeck, type Slide } from "@/components/asist/SlideDeck";
 import { Quiz } from "@/components/asist/Quiz";
@@ -79,10 +79,19 @@ function ArduinoLesson() {
             className="aspect-video w-full rounded-2xl border border-foreground/10 bg-foreground/5"
             allow="autoplay; clipboard-write"
           />
-          <div className="px-2 pt-3 pb-1">
+          <div className="px-2 pt-3 pb-1 flex flex-wrap items-center gap-3">
             <Button asChild size="sm" className="border-2 border-foreground shadow-pop">
               <Link to="/assessment">Open Assessment Hub <ArrowRight className="ml-1 size-4" /></Link>
             </Button>
+            <a
+              href="https://iopscience.iop.org/article/10.1088/1742-6596/1378/4/042079/pdf"
+              target="_blank"
+              rel="noreferrer"
+              download
+              className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground"
+            >
+              <Download className="size-4" /> Download offline worksheet (PDF)
+            </a>
           </div>
         </div>
 
