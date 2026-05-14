@@ -69,20 +69,46 @@ function ArduinoLesson() {
         <div className="rounded-3xl border-2 border-foreground bg-card p-3 shadow-card">
           <div className="flex items-center justify-between px-2 py-2">
             <div className="font-display font-bold">🧪 Wokwi Simulator</div>
-            <a href="https://wokwi.com/projects/new/arduino-uno" target="_blank" rel="noreferrer" className="text-xs inline-flex items-center gap-1 text-muted-foreground hover:text-foreground">
+            <a href="https://wokwi.com/projects/463872440564369409" target="_blank" rel="noreferrer" className="text-xs inline-flex items-center gap-1 text-muted-foreground hover:text-foreground">
               Open in new tab <ExternalLink className="size-3" />
             </a>
           </div>
-          <div className="aspect-video w-full overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/5 grid place-items-center text-center p-6">
-            <div>
-              <div className="text-5xl mb-3">🚦</div>
-              <div className="font-display font-bold">Wokwi template loads here</div>
-              <p className="text-xs text-muted-foreground mt-1 max-w-sm">In production this iframe embeds the teacher's pre-wired Wokwi project. Submit triggers our verification webhook.</p>
-              <Button asChild className="mt-4 border-2 border-foreground shadow-pop">
-                <Link to="/assessment">Open Assessment Hub <ArrowRight className="ml-1 size-4" /></Link>
-              </Button>
-            </div>
+          <iframe
+            src="https://wokwi.com/projects/463872440564369409"
+            title="Wokwi traffic light project"
+            className="aspect-video w-full rounded-2xl border border-foreground/10 bg-foreground/5"
+            allow="autoplay; clipboard-write"
+          />
+          <div className="px-2 pt-3 pb-1">
+            <Button asChild size="sm" className="border-2 border-foreground shadow-pop">
+              <Link to="/assessment">Open Assessment Hub <ArrowRight className="ml-1 size-4" /></Link>
+            </Button>
           </div>
+        </div>
+
+        <div className="mt-6 rounded-3xl border-2 border-foreground bg-card p-3 shadow-card">
+          <div className="flex items-center justify-between px-2 py-2">
+            <div className="font-display font-bold">🛠️ Tinkercad Circuit</div>
+            <a href="https://www.tinkercad.com/embed/0cl8dPuvIbf?editbtn=1&simlab=1" target="_blank" rel="noreferrer" className="text-xs inline-flex items-center gap-1 text-muted-foreground hover:text-foreground">
+              Open in new tab <ExternalLink className="size-3" />
+            </a>
+          </div>
+          <iframe
+            src="https://www.tinkercad.com/embed/0cl8dPuvIbf?editbtn=1&simlab=1"
+            title="Tinkercad traffic light circuit"
+            className="aspect-video w-full rounded-2xl border border-foreground/10 bg-foreground/5"
+            allow="fullscreen"
+          />
+        </div>
+
+        <div className="mt-6 rounded-3xl border-2 border-foreground bg-card p-3 shadow-card">
+          <div className="px-2 py-2 font-display font-bold">🎬 Watch it in action</div>
+          <video
+            src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Arduino_interactive_traffic_lights.webm"
+            controls
+            playsInline
+            className="aspect-video w-full rounded-2xl border border-foreground/10 bg-black"
+          />
         </div>
       </div>
 

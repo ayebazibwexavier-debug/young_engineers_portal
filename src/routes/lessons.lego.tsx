@@ -54,6 +54,18 @@ function LegoLesson() {
         <SlideDeck slides={slides} accent="bg-primary" />
       </div>
 
+      <div className="mx-auto max-w-4xl px-4 mt-8">
+        <div className="rounded-3xl border-2 border-foreground bg-card p-3 shadow-card">
+          <div className="px-2 py-2 font-display font-bold">🎬 See the build in motion</div>
+          <video
+            src="https://static.vecteezy.com/system/resources/previews/052/912/299/watermarked/animation-of-car-vehicle-for-transportation-needs-showcasing-comfort-safety-and-efficiency-perfect-for-modern-travel-free-video.mp4"
+            controls
+            playsInline
+            className="aspect-video w-full rounded-2xl border border-foreground/10 bg-black"
+          />
+        </div>
+      </div>
+
       <div className="mx-auto max-w-4xl px-4 mt-8 grid lg:grid-cols-[2fr_1fr] gap-5">
         <Quiz questions={quiz} onPass={() => setDone(true)} />
         <div className="rounded-3xl border-2 border-foreground bg-sun p-5 shadow-card flex flex-col">
