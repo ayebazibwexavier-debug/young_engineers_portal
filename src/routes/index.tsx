@@ -30,7 +30,7 @@ function Landing() {
       <section className="mx-auto max-w-6xl px-4 pt-8 pb-12 grid lg:grid-cols-2 gap-8 items-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <div className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-sun text-sun-foreground px-3 py-1 text-xs font-mono shadow-pop">
-            <Sparkles className="size-3.5" /> Pitch prototype · v0.1
+            <Sparkles className="size-3.5" /> ASIST PORTAL · v0.1
           </div>
           <h1 className="font-display text-4xl sm:text-6xl font-extrabold leading-[1.05] mt-4">
             Every kid in Uganda<br />
